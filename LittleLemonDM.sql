@@ -18,11 +18,11 @@ USE `LittleLemonDB` ;
 -- Table `LittleLemonDB`.`Customers`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `LittleLemonDB`.`Customers` (
-  `CustomerID` INT NOT NULL,
-  `CustomerName` VARCHAR(45) NOT NULL,
-  `Address` VARCHAR(45) NOT NULL,
-  `Email` VARCHAR(45) NOT NULL,
-  `PhoneNumber` VARCHAR(45) NOT NULL,
+  `CustomerID` INT NOT NULL AUTO_INCREMENT,
+  `CustomerName` VARCHAR(45) NULL,
+  `Address` VARCHAR(45) NULL,
+  `Email` VARCHAR(45) NULL,
+  `PhoneNumber` VARCHAR(45) NULL,
   PRIMARY KEY (`CustomerID`))
 ENGINE = InnoDB;
 
@@ -31,10 +31,10 @@ ENGINE = InnoDB;
 -- Table `LittleLemonDB`.`Bookings`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `LittleLemonDB`.`Bookings` (
-  `BookingID` INT NOT NULL,
-  `Date` DATE NOT NULL,
-  `TableNumber` INT NOT NULL,
-  `CustomerID` INT NOT NULL,
+  `BookingID` INT NOT NULL AUTO_INCREMENT,
+  `Date` DATE NULL,
+  `TableNumber` INT NULL,
+  `CustomerID` INT NULL,
   PRIMARY KEY (`BookingID`),
   INDEX `CustomerID_idx` (`CustomerID` ASC) VISIBLE,
   CONSTRAINT `CustomerID`
@@ -49,10 +49,10 @@ ENGINE = InnoDB;
 -- Table `LittleLemonDB`.`MenuItems`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `LittleLemonDB`.`MenuItems` (
-  `MenuItemsID` INT NOT NULL,
-  `CourseName` VARCHAR(45) NOT NULL,
-  `StarterName` VARCHAR(45) NOT NULL,
-  `DesertName` VARCHAR(45) NOT NULL,
+  `MenuItemsID` INT NOT NULL AUTO_INCREMENT,
+  `CourseName` VARCHAR(45) NULL,
+  `StarterName` VARCHAR(45) NULL,
+  `DesertName` VARCHAR(45) NULL,
   PRIMARY KEY (`MenuItemsID`))
 ENGINE = InnoDB;
 
@@ -61,11 +61,11 @@ ENGINE = InnoDB;
 -- Table `LittleLemonDB`.`Menus`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `LittleLemonDB`.`Menus` (
-  `MenuID` INT NOT NULL,
-  `MenuName` VARCHAR(45) NOT NULL,
-  `Cuisine` VARCHAR(45) NOT NULL,
-  `Price` DECIMAL NOT NULL,
-  `MenuItemsID` INT NOT NULL,
+  `MenuID` INT NOT NULL AUTO_INCREMENT,
+  `MenuName` VARCHAR(45) NULL,
+  `Cuisine` VARCHAR(45) NULL,
+  `Price` DECIMAL NULL,
+  `MenuItemsID` INT NULL,
   PRIMARY KEY (`MenuID`),
   INDEX `MenuItemsID_idx` (`MenuItemsID` ASC) VISIBLE,
   CONSTRAINT `MenuItemsID`
@@ -80,10 +80,10 @@ ENGINE = InnoDB;
 -- Table `LittleLemonDB`.`Staffs`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `LittleLemonDB`.`Staffs` (
-  `StaffID` INT NOT NULL,
-  `StaffName` VARCHAR(45) NOT NULL,
-  `Role` VARCHAR(45) NOT NULL,
-  `Salary` DECIMAL NOT NULL,
+  `StaffID` INT NOT NULL AUTO_INCREMENT,
+  `StaffName` VARCHAR(45) NULL,
+  `Role` VARCHAR(45) NULL,
+  `Salary` DECIMAL NULL,
   PRIMARY KEY (`StaffID`))
 ENGINE = InnoDB;
 
@@ -92,13 +92,13 @@ ENGINE = InnoDB;
 -- Table `LittleLemonDB`.`Orders`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `LittleLemonDB`.`Orders` (
-  `OrderID` INT NOT NULL,
-  `OrderDate` DATE NOT NULL,
-  `Quantity` INT NOT NULL,
-  `TotalCost` DECIMAL NOT NULL,
-  `MenuID` INT NOT NULL,
-  `StaffID` INT NOT NULL,
-  `BookingID` INT NOT NULL,
+  `OrderID` INT NOT NULL AUTO_INCREMENT,
+  `OrderDate` DATE NULL,
+  `Quantity` INT NULL,
+  `TotalCost` DECIMAL NULL,
+  `MenuID` INT NULL,
+  `StaffID` INT NULL,
+  `BookingID` INT NULL,
   PRIMARY KEY (`OrderID`),
   INDEX `MenuID_idx` (`MenuID` ASC) VISIBLE,
   INDEX `StaffID_idx` (`StaffID` ASC) VISIBLE,
@@ -125,10 +125,10 @@ ENGINE = InnoDB;
 -- Table `LittleLemonDB`.`OrderDeliveryStatus`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `LittleLemonDB`.`OrderDeliveryStatus` (
-  `StatusID` INT NOT NULL,
-  `DeliveryDate` DATE NOT NULL,
-  `Status` VARCHAR(45) NOT NULL,
-  `OrderID` INT NOT NULL,
+  `StatusID` INT NOT NULL AUTO_INCREMENT,
+  `DeliveryDate` DATE NULL,
+  `Status` VARCHAR(45) NULL,
+  `OrderID` INT NULL,
   PRIMARY KEY (`StatusID`),
   INDEX `OrderID_idx` (`OrderID` ASC) VISIBLE,
   CONSTRAINT `OrderID`
